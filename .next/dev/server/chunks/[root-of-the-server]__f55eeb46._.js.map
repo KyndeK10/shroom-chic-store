@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 58, "column": 0}, "map": {"version":3,"sources":["file:///C:/Users/symme/Downloads/apps/Shroom%20Chic%20Creations/src/app/api/products/route.ts"],"sourcesContent":["import { NextResponse } from \"next/server\";\nimport fs from \"fs\";\nimport path from \"path\";\n\nexport async function GET() {\n  try {\n    const productsData = fs.readFileSync(\n      path.resolve(process.cwd(), \"public/products.json\"),\n      \"utf8\"\n    );\n    return NextResponse.json(JSON.parse(productsData));\n  } catch (error) {\n    return NextResponse.json(\n      { error: \"Failed to load products\" },\n      { status: 500 }\n    );\n  }\n}\n"],"names":[],"mappings":";;;;AAAA;AACA;AACA;;;;AAEO,eAAe;IACpB,IAAI;QACF,MAAM,eAAe,wGAAE,CAAC,YAAY,CAClC,4GAAI,CAAC,OAAO,CAAC,QAAQ,GAAG,IAAI,yBAC5B;QAEF,OAAO,gMAAY,CAAC,IAAI,CAAC,KAAK,KAAK,CAAC;IACtC,EAAE,OAAO,OAAO;QACd,OAAO,gMAAY,CAAC,IAAI,CACtB;YAAE,OAAO;QAA0B,GACnC;YAAE,QAAQ;QAAI;IAElB;AACF"}}]
+}

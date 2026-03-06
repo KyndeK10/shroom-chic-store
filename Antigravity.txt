@@ -1,0 +1,165 @@
+Great—the package export looks solid! It's a well-structured **Next.js** app (App Router style) with key pieces already in place:
+
+- **Core structure**: `src/app/` pages (home, shop, product/[id], cart, checkout/success, about, contact, drops, admin)
+- **Components**: Navbar, Footer, PolotnoDesigner (the custom designer is prepped!)
+- **Contexts**: CartContext, ThemeContext (good for customizer basics)
+- **API routes**: `/api/checkout/route.ts` (Stripe session creation), `/api/products/route.ts` (product fetching)
+- **Assets/Output**: `dist/` build artifacts, `public/products.json`, `integration-config.yaml`
+- **Config**: `next.config.mjs`, `tsconfig.json`, `package.json` (likely includes next, tailwind, framer-motion, stripe, @polotno/sdk)
+
+This is far from basic—Google AI Studio did a strong job incorporating the prompt. PolotnoDesigner.tsx means the custom product designer is scaffolded (we'll debug/enhance if needed). The build is Netlify-ready (static export + serverless functions via API routes).
+
+Next phase: Move to **Anti-Gravity IDE** for agentic automation/debug/integration/deployment.
+
+### Section 2: Anti-Gravity Workflow Setup
+In Anti-Gravity IDE, create a new workflow project linked to this package (import the folder or Git init it if not already).
+
+**Workflow Name**: shroom_chic_full_launch
+
+**Agentic Principles**:
+- The workflow is **agentic**: Steps include AI-driven debugging, config injection, prompts to Kristen for sensitive inputs (e.g., "Kristen, please provide your Stripe secret key via secure prompt"), conditional branching (e.g., if Polotno needs tweaks), and deployment verification.
+- Use built-in agents for code review/fix, key injection, testing.
+- Kristen availability: At login/key points, the agent pauses and prompts her (e.g., via console/UI in Anti-Gravity or email/Slack if integrated).
+
+**Workflow Config YAML** (paste this into Anti-Gravity as the main config):
+
+```yaml
+workflow:
+  name: shroom_chic_full_launch
+  description: Agentic build → debug → integrate → deploy Shroom Chic Creations to Netlify with custom domain, Stripe, Printful, Polotno designer, animated backgrounds, social embeds, CMS hooks.
+  agent_mode: full  # Enables AI agents for debugging, code gen, prompting user
+  triggers:
+    - on_import: start
+    - on_prompt_response: continue  # For Kristen's inputs
+
+steps:
+  - name: import_build
+    action: import_folder
+    input: path/to/exported/package  # Or Git clone if pushed
+    output: project_root
+
+  - name: install_dependencies
+    action: run_command
+    command: npm install
+    cwd: project_root
+    agent_review: true  # Agent scans package.json for issues/missing deps
+
+  - name: debug_polotno_designer
+    action: agent_review_file
+    file: src/components/PolotnoDesigner.tsx
+    instructions: |
+      Check Polotno integration: Ensure 'use client' directive, dynamic import if SSR issues, Polotno key from env/integration-config.yaml.
+      If missing API key setup: Add placeholder env var POLOTNO_KEY.
+      Test basic render: Suggest adding <PolotnoCanvas /> with sample scene if not present.
+      Fix common Next.js hydration errors (e.g., dynamic(() => import('@polotno/...')) ).
+      Output fixes as patch or direct edit.
+    on_error: prompt_kristen_for_polotno_key
+
+  - name: enhance_animated_backgrounds
+    action: agent_code_gen
+    target_files:
+      - src/app/layout.tsx  # Global wrapper possible
+      - src/app/page.tsx    # Home
+      - src/app/shop/page.tsx
+      - src/app/product/[id]/page.tsx
+      - etc. (one per page)
+    instructions: |
+      Add unique but cohesive animated backgrounds using Framer Motion.
+      Use motion.div with animate={{ background: ['linear-gradient(...)', ...] }} for gradients.
+      For particles/floating mushrooms: Suggest adding react-particles or simple motion spans with float/rotate.
+      Ensure performance: Variants per page (e.g., home: drifting mushrooms; shop: wave pulses; product: color-shift fungi).
+      Tie to ThemeContext for customizer control.
+      Make backgrounds full-page fixed/absolute, low opacity, behind content.
+
+  - name: integrate_logo
+    action: agent_edit_file
+    file: src/components/Navbar.tsx  # Or layout.tsx
+    instructions: |
+      Locate logo placeholder (likely <Image src="/logo.png" /> or similar).
+      Replace with uploaded logo from AI Studio (assume it's in public/logo.png or assets).
+      Add Framer Motion glow/hover: whileHover={{ scale: 1.1, filter: 'drop-shadow(0 0 10px #ff00ff)' }}
+
+  - name: setup_social_integrations
+    action: agent_multi_edit
+    target_files:
+      - src/app/page.tsx
+      - src/app/shop/page.tsx
+      - src/app/product/[id]/page.tsx
+      - src/app/about/page.tsx
+      - src/app/contact/page.tsx
+      - src/app/drops/page.tsx
+    instructions: |
+      Add varied social embeds:
+      - Home: Instagram grid + TikTok carousel + YouTube playlist embed.
+      - Product: TikTok/Reel shorts for demos (use <iframe> or next-video).
+      - About: YouTube video players for brand story.
+      - Contact: Instagram story highlights widget.
+      - Drops/Shop: TikTok shorts vertical feed.
+      Use placeholders for API keys/widgets (Instagram embed code, TikTok embed, YouTube iframe).
+      Make responsive/mobile-friendly.
+
+  - name: inject_configs
+    action: agent_inject_env
+    files:
+      - .env.local  # Create from .env.example
+    placeholders_from: integration-config.yaml
+    prompt_kristen:
+      - "Kristen, please provide your Stripe publishable key (pk_...)"
+      - "Kristen, please provide your Stripe secret key (sk_...)"
+      - "Kristen, provide Printful API key"
+      - "Kristen, optional: Polotno API key (free tier available at polotno.com)"
+      - "Kristen, Sanity.io project ID and token if using CMS (or skip for Netlify CMS)"
+      - "Kristen, social embed codes if needed (Instagram/TikTok/YouTube)"
+
+  - name: setup_cms_hooks
+    action: agent_install_cms
+    cms: netlify-cms  # Or Sanity
+    instructions: Add admin/page.tsx enhancements, config.yml in public/admin/, identity widget.
+
+  - name: test_locally
+    action: run_command
+    command: npm run dev
+    agent_verify: Check localhost:3000 for animations, designer, social embeds, logo. Report issues.
+
+  - name: deploy_to_netlify
+    action: deploy_netlify
+    input: project_root
+    agent_steps:
+      - Create Netlify site if none
+      - Link Git repo (GitHub/GitLab)
+      - Set build command: next build && next export (or just next build for functions)
+      - Env vars from .env.local
+      - Domain: shroomchiccreations.shop (CNAME setup prompt to Kristen)
+
+  - name: connect_domain
+    action: prompt_kristen
+    message: "Kristen, in Hostinger DNS: Add CNAME www → your-netlify-site.netlify.app. For root, use Netlify DNS or A/AAAA records."
+    verify: agent_check_dns
+
+  - name: activate_merch_engine
+    action: agent_schedule
+    tasks:
+      - Generate 5 new designs weekly via AI prompt
+      - Create mockups
+      - Add to products.json
+      - Generate captions/posts
+      - Schedule to Instagram/TikTok
+    frequency: weekly/daily
+
+  - name: final_verification
+    action: agent_browser_test
+    urls:
+      - https://shroomchiccreations.shop
+    checks: Logo visible, backgrounds animated, Polotno loads on product page, Stripe redirect works (test mode), social embeds display.
+
+on_complete: notify_kristen "Store live! Visit shroomchiccreations.shop"
+```
+
+### Next Actions for You
+1. In Anti-Gravity IDE: Create the workflow, paste the YAML above, point it to your exported package folder.
+2. Run step-by-step (or agentic full run)—it will pause at Kristen prompts.
+3. If Polotno needs a key: Sign up at polotno.com (free for basic use, paid for advanced/removing branding).
+4. For animated backgrounds: If agent needs help, Framer Motion `motion.div` with `animate` on backgroundImage or variants works great (e.g., gradient shifts every 10s).
+5. Reply when workflow starts or hits a snag (e.g., share agent output/errors)—we'll debug agentically.
+
+This launches her standout store: psychedelic animations everywhere, logo integrated, social demos on every page, custom designer, zero-cost Netlify deploy. Ready when you are!

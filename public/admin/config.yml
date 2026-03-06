@@ -1,0 +1,72 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "public/uploads"
+public_folder: "/uploads"
+
+collections:
+  - name: "products"
+    label: "Products"
+    folder: "content/products"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Product ID", name: "id", widget: "string" }
+      - { label: "Name", name: "name", widget: "string" }
+      - { label: "Price", name: "price", widget: "number", value_type: "float" }
+      - { label: "Description", name: "description", widget: "text" }
+      - { label: "Image", name: "image", widget: "image" }
+      - { label: "Category", name: "category", widget: "select", options: ["Apparel", "Accessories", "Home"] }
+      - label: "Variants"
+        name: "variants"
+        widget: "list"
+        fields:
+          - { label: "Size", name: "size", widget: "string" }
+          - { label: "Color", name: "color", widget: "string" }
+      - label: "Customizable Areas"
+        name: "customizable_areas"
+        widget: "list"
+        field: { label: "Area", name: "area", widget: "string" }
+      - { label: "Printful ID", name: "printful_id", widget: "string", required: false }
+
+  - name: "drops"
+    label: "Limited Drops"
+    folder: "content/drops"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Description", name: "description", widget: "text" }
+      - { label: "Drop Date", name: "drop_date", widget: "datetime" }
+      - { label: "Featured Image", name: "image", widget: "image" }
+      - { label: "Total Available", name: "total_available", widget: "number", value_type: "int" }
+      - { label: "Body", name: "body", widget: "markdown" }
+
+  - name: "pages"
+    label: "Pages"
+    files:
+      - label: "About"
+        name: "about"
+        file: "content/pages/about.md"
+        fields:
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Subtitle", name: "subtitle", widget: "string" }
+          - { label: "Photo", name: "photo", widget: "image" }
+          - { label: "Body", name: "body", widget: "markdown" }
+          - { label: "Quote", name: "quote", widget: "string" }
+
+  - name: "settings"
+    label: "Site Settings"
+    files:
+      - label: "Social Links"
+        name: "social"
+        file: "content/settings/social.json"
+        fields:
+          - { label: "Instagram URL", name: "instagram_url", widget: "string", required: false }
+          - { label: "Instagram Embed Code", name: "instagram_embed", widget: "text", required: false }
+          - { label: "TikTok URL", name: "tiktok_url", widget: "string", required: false }
+          - { label: "TikTok Embed Code", name: "tiktok_embed", widget: "text", required: false }
+          - { label: "YouTube Channel URL", name: "youtube_url", widget: "string", required: false }
+          - { label: "YouTube Embed URL", name: "youtube_embed", widget: "string", required: false }
+          - { label: "Facebook URL", name: "facebook_url", widget: "string", required: false }

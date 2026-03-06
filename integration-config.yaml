@@ -1,0 +1,19 @@
+# Shroom Chic Creations - Integration Configuration
+
+stripe:
+  publishable_key: "pk_test_..." # Replace with your Stripe Publishable Key
+  secret_key: "sk_test_..."     # Replace with your Stripe Secret Key (Keep secure, use in .env)
+  webhook_secret: "whsec_..."   # Replace with your Stripe Webhook Secret
+
+printful:
+  api_key: "YOUR_PRINTFUL_API_KEY" # Replace with your Printful API Key
+
+cms:
+  provider: "sanity" # or "netlify"
+  sanity:
+    project_id: "YOUR_SANITY_PROJECT_ID"
+    dataset: "production"
+    api_version: "2023-05-03"
+
+polotno:
+  api_key: "YOUR_POLOTNO_API_KEY" # Replace with your Polotno SDK Key

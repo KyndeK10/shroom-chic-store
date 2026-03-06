@@ -1,0 +1,13 @@
+var R=require("../../chunks/ssr/[turbopack]_runtime.js")("server/app/_not-found/page.js")
+R.c("server/chunks/ssr/[root-of-the-server]__0cb21d98._.js")
+R.c("server/chunks/ssr/1df93_next_dist_f3f39887._.js")
+R.c("server/chunks/ssr/1df93_next_dist_esm_build_templates_app-page_d427a7b3.js")
+R.c("server/chunks/ssr/[root-of-the-server]__2682ae85._.js")
+R.c("server/chunks/ssr/[root-of-the-server]__96548aa3._.js")
+R.c("server/chunks/ssr/1df93_next_dist_bcb53bf7._.js")
+R.c("server/chunks/ssr/[root-of-the-server]__67046305._.js")
+R.c("server/chunks/ssr/1df93_next_dist_client_components_8d7956fd._.js")
+R.c("server/chunks/ssr/1df93_next_dist_client_components_builtin_forbidden_816d0cee.js")
+R.c("server/chunks/ssr/b1e3e_Shroom Chic Creations__next-internal_server_app__not-found_page_actions_83a3e292.js")
+R.m(23766)
+module.exports=R.m(23766).exports

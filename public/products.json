@@ -1,0 +1,88 @@
+[
+  {
+    "id": "prod_1",
+    "name": "Neon Spores Hoodie",
+    "price": 65.00,
+    "description": "A cozy, vibrant hoodie featuring glowing neon mushroom spores. Perfect for festival nights.",
+    "image": "https://picsum.photos/seed/neon-spores/800/800",
+    "category": "Apparel",
+    "variants": [
+      { "id": "v1", "size": "S", "color": "Black" },
+      { "id": "v2", "size": "M", "color": "Black" },
+      { "id": "v3", "size": "L", "color": "Black" }
+    ],
+    "customizable_areas": ["front", "back"],
+    "printful_id": "pf_12345"
+  },
+  {
+    "id": "prod_2",
+    "name": "Trippy Ripple Tote Bag",
+    "price": 25.00,
+    "description": "Carry your essentials in style with this earthy, textured tote bag featuring a trippy ripple effect.",
+    "image": "https://picsum.photos/seed/trippy-tote/800/800",
+    "category": "Accessories",
+    "variants": [
+      { "id": "v4", "size": "One Size", "color": "Natural" }
+    ],
+    "customizable_areas": ["front"],
+    "printful_id": "pf_67890"
+  },
+  {
+    "id": "prod_3",
+    "name": "Psychedelic Canopy Tapestry",
+    "price": 45.00,
+    "description": "Transform your space with this large tapestry depicting a magical, glowing mushroom canopy.",
+    "image": "https://picsum.photos/seed/psychedelic-tapestry/800/800",
+    "category": "Home",
+    "variants": [
+      { "id": "v5", "size": "50x60", "color": "Multicolor" },
+      { "id": "v6", "size": "60x80", "color": "Multicolor" }
+    ],
+    "customizable_areas": [],
+    "printful_id": "pf_11223"
+  },
+  {
+    "id": "prod_4",
+    "name": "Boho Fungi Crop Top",
+    "price": 30.00,
+    "description": "A cute and comfortable crop top with a delicate, feminine mushroom illustration.",
+    "image": "https://picsum.photos/seed/boho-crop/800/800",
+    "category": "Apparel",
+    "variants": [
+      { "id": "v7", "size": "XS", "color": "White" },
+      { "id": "v8", "size": "S", "color": "White" },
+      { "id": "v9", "size": "M", "color": "White" }
+    ],
+    "customizable_areas": ["front"],
+    "printful_id": "pf_44556"
+  },
+  {
+    "id": "prod_5",
+    "name": "Earthy Vibes Phone Case",
+    "price": 20.00,
+    "description": "Protect your phone with this durable case featuring an earthy, textured mushroom design.",
+    "image": "https://picsum.photos/seed/earthy-case/800/800",
+    "category": "Accessories",
+    "variants": [
+      { "id": "v10", "size": "iPhone 13", "color": "Clear" },
+      { "id": "v11", "size": "iPhone 14", "color": "Clear" }
+    ],
+    "customizable_areas": ["back"],
+    "printful_id": "pf_77889"
+  },
+  {
+    "id": "prod_6",
+    "name": "Glowing Mycelium Leggings",
+    "price": 55.00,
+    "description": "Stand out at your next festival with these leggings featuring a glowing mycelium network pattern.",
+    "image": "https://picsum.photos/seed/glowing-leggings/800/800",
+    "category": "Apparel",
+    "variants": [
+      { "id": "v12", "size": "S", "color": "Purple" },
+      { "id": "v13", "size": "M", "color": "Purple" },
+      { "id": "v14", "size": "L", "color": "Purple" }
+    ],
+    "customizable_areas": [],
+    "printful_id": "pf_99001"
+  }
+]

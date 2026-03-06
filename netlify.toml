@@ -1,0 +1,23 @@
+[build]
+  command = "npm run build"
+  NODE_VERSION = "20"
+
+# Redirect all traffic to HTTPS
+[[redirects]]
+  from = "http://shroomchiccreations.shop/*"
+  to = "https://shroomchiccreations.shop/:splat"
+  status = 301
+  force = true
+
+# Netlify Identity redirect for CMS
+[[redirects]]
+  from = "/admin"
+  to = "/admin/index.html"
+  status = 200
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "SAMEORIGIN"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
