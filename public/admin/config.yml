@@ -1,6 +1,9 @@
 backend:
-  name: git-gateway
+  name: github
+  repo: KyndeK10/shroom-chic-store
   branch: main
+  base_url: https://shroom-chic-creations-store.vercel.app
+  auth_endpoint: /api/auth
 
 media_folder: "public/uploads"
 public_folder: "/uploads"

@@ -1,0 +1,123 @@
+ ┬╗   Warning: --build is now the default and can safely be omitted.
+[96m[1mΓÇï[22m[39m
+[96m[1mNetlify Build                                                 [22m[39m
+[96m[1mΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ[22m[39m
+[36m[1mΓÇï[22m[39m
+[36m[1mΓ¥» Version[22m[39m
+  @netlify/build 35.8.3
+[36m[1mΓÇï[22m[39m
+[36m[1mΓ¥» Flags[22m[39m
+  accountId: 69ab414ea7d39e10ea4c9312
+  deployId: 69ab48cb911f6b107dcd36be
+[36m[1mΓÇï[22m[39m
+[36m[1mΓ¥» Current directory[22m[39m
+  C:\Users\symme\Downloads\apps\Shroom Chic Creations
+[36m[1mΓÇï[22m[39m
+[36m[1mΓ¥» Config file[22m[39m
+  C:\Users\symme\Downloads\apps\Shroom Chic Creations\netlify.toml
+[36m[1mΓÇï[22m[39m
+[36m[1mΓ¥» Context[22m[39m
+  production
+[36m[1mΓÇï[22m[39m
+[36m[1mΓ¥» Using Next.js Runtime - v5.15.8[22m[39m
+[96m[1mΓÇï[22m[39m
+[96m[1mbuild.command from netlify.toml                               [22m[39m
+[96m[1mΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ[22m[39m
+ΓÇï
+[36m$ npm run build[39m
+
+> react-example@0.0.0 build
+> next build
+
+ΓÜá Warning: Next.js inferred your workspace root, but it may not be correct.
+ We detected multiple lockfiles and selected the directory of C:\Users\symme\package-lock.json as the root directory.
+ To silence this warning, set `turbopack.root` in your Next.js config, or consider removing one of the lockfiles if it's not needed.
+   See https://nextjs.org/docs/app/api-reference/config/next-config-js/turbopack#root-directory for more information.
+ Detected additional lockfiles: 
+   * C:\Users\symme\Downloads\apps\Shroom Chic Creations\package-lock.json
+
+Γû▓ Next.js 16.1.6 (Turbopack)
+- Environments: .env.local
+
+  Creating an optimized production build ...
+Γ£ô Compiled successfully in 10.7s
+  Running TypeScript ...
+  Collecting page data using 11 workers ...
+  Generating static pages using 11 workers (0/12) ...
+  Generating static pages using 11 workers (3/12) 
+  Generating static pages using 11 workers (6/12) 
+  Generating static pages using 11 workers (9/12) 
+Γ£ô Generating static pages using 11 workers (12/12) in 534.3ms
+  Finalizing page optimization ...
+
+Route (app)
+Γöî Γùï /
+Γö£ Γùï /_not-found
+Γö£ Γùï /about
+Γö£ Γùï /admin
+Γö£ ╞Æ /api/checkout
+Γö£ ╞Æ /api/products
+Γö£ Γùï /cart
+Γö£ Γùï /checkout/success
+Γö£ Γùï /contact
+Γö£ Γùï /drops
+Γö£ ╞Æ /product/[id]
+Γöö Γùï /shop
+
+
+Γùï  (Static)   prerendered as static content
+╞Æ  (Dynamic)  server-rendered on demand
+
+ΓÇï
+[90m(build.command completed in 22.4s)[39m
+[96m[1mΓÇï[22m[39m
+[96m[1mFunctions bundling                                            [22m[39m
+[96m[1mΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ[22m[39m
+ΓÇï
+Packaging Functions from [36m.netlify\functions-internal[39m directory:
+ - ___netlify-server-handler\___netlify-server-handler.mjs
+ΓÇï
+ΓÇï
+[90m(Functions bundling completed in 2.8s)[39m
+
+Deploying to Netlify
+ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+
+[32mDeploy path: [39m       C:\Users\symme\Downloads\apps\Shroom Chic Creations\.next
+[32mConfiguration path: [39mC:\Users\symme\Downloads\apps\Shroom Chic Creations\netlify.toml
+
+Γáï Uploading blobs to deploy store...
+
+Γ£ö Finished uploading blobs to deploy store
+Γáï Hashing files...
+Γáï Looking for a functions cache...
+Γ£ö Deploying functions from cache (use --skip-functions-cache to override)
+Γ£ö Finished hashing 43 files and 1 functions
+Γáï CDN diffing files...
+Γ£ö CDN requesting 25 files and 1 functions
+Γáï Uploading 26 files
+Γ£ö Finished uploading 26 assets
+Γáï Waiting for deploy to go live...
+Γ£ö Deploy is live!
+[96m[1mΓÇï[22m[39m
+[96m[1mNetlify Build Complete                                        [22m[39m
+[96m[1mΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ[22m[39m
+ΓÇï
+[90m(Netlify Build completed in 4m 21.4s)[39m
+
+≡ƒÜÇ Deploy complete
+ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+
+Γò¡ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ Γ¼Ñ  Production deploy is live Γ¼ÑΓÇë ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓò«
+Γöé                                                                              Γöé
+Γöé                         Deployed to production URL:                          Γöé
+Γöé               https://shroom-chic-creations-store.netlify.app                Γöé
+Γöé                                                                              Γöé
+Γöé   Unique deploy URL: https://69ab48cb911f6b107dcd36be--shroom-chic-creatio   Γöé
+Γöé                             ns-store.netlify.app                             Γöé
+Γöé                                                                              Γöé
+Γò░ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓò»
+
+[32mBuild logs: [39m        https://app.netlify.com/projects/shroom-chic-creations-store/deploys/69ab48cb911f6b107dcd36be
+[32mFunction logs: [39m     https://app.netlify.com/projects/shroom-chic-creations-store/logs/functions
+[32mEdge function Logs: [39mhttps://app.netlify.com/projects/shroom-chic-creations-store/logs/edge-functions
