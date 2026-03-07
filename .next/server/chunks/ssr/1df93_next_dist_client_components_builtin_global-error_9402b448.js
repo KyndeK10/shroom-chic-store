@@ -1,3 +1,0 @@
-module.exports=[48459,(a,b,c)=>{let{createClientModuleProxy:d}=a.r(79721);a.n(d("[project]/Downloads/apps/Shroom Chic Creations/node_modules/next/dist/client/components/builtin/global-error.js <module evaluation>"))},19817,(a,b,c)=>{let{createClientModuleProxy:d}=a.r(79721);a.n(d("[project]/Downloads/apps/Shroom Chic Creations/node_modules/next/dist/client/components/builtin/global-error.js"))},82713,a=>{"use strict";a.i(48459);var b=a.i(19817);a.n(b)}];
-
-//# sourceMappingURL=1df93_next_dist_client_components_builtin_global-error_9402b448.js.map
