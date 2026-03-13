@@ -1,0 +1,18 @@
+<!-- Article Template -->
+<div class="container py-24" style="max-width:56rem">
+  <div class="text-center mb-12">
+    <h1 class="font-serif gradient-text" style="font-size:2.5rem;font-weight:700;margin-bottom:1rem">{{ article.title }}</h1>
+    <p class="text-stone-500" style="font-size:0.875rem">{{ article.published_at | date: '%B %d, %Y' }} · {{ article.author }}</p>
+  </div>
+  {% if article.image %}
+    <div style="border-radius:1.5rem;overflow:hidden;margin-bottom:2rem;border:1px solid rgba(88,28,135,0.3)">
+      <img src="{{ article.image | image_url: width: 1200 }}" alt="{{ article.title }}" style="width:100%;height:auto">
+    </div>
+  {% endif %}
+  <div class="about-text">
+    {{ article.content }}
+  </div>
+  <div class="mt-8">
+    <a href="{{ blog.url }}" class="btn btn-outline">&larr; Back to {{ blog.title }}</a>
+  </div>
+</div>

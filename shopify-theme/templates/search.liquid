@@ -1,0 +1,35 @@
+<!-- Search Template -->
+<div class="container py-24">
+  <div class="text-center mb-12">
+    <h1 class="font-serif gradient-text" style="font-size:2.5rem;font-weight:700;margin-bottom:1.5rem">Search Results</h1>
+  </div>
+  <div class="collection-filters" style="justify-content:center;margin-bottom:2rem">
+    <form action="/search" method="get" class="search-wrap" style="max-width:32rem">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <input type="text" name="q" value="{{ search.terms }}" placeholder="Search the magic..." class="form-input form-input-round">
+    </form>
+  </div>
+  {% if search.performed %}
+    {% if search.results_count > 0 %}
+      <div class="product-grid">
+        {% for result in search.results %}
+          <div class="product-card">
+            {% if result.featured_image %}
+              <a href="{{ result.url }}" class="product-card-image">
+                <img src="{{ result.featured_image | image_url: width: 800 }}" alt="{{ result.title }}" loading="lazy">
+              </a>
+            {% endif %}
+            <div class="product-card-body">
+              <h3 class="product-card-title"><a href="{{ result.url }}">{{ result.title }}</a></h3>
+              {% if result.price %}
+                <span class="product-card-price">{{ result.price | money }}</span>
+              {% endif %}
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    {% else %}
+      <p class="text-center text-muted" style="font-size:1.125rem">No magical items found for "{{ search.terms }}".</p>
+    {% endif %}
+  {% endif %}
+</div>

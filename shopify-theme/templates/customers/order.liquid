@@ -1,0 +1,25 @@
+<!-- Customer Order Template -->
+<div class="container py-24" style="max-width:56rem">
+  <h1 class="font-serif gradient-text" style="font-size:2.5rem;font-weight:700;margin-bottom:0.5rem">Order {{ order.name }}</h1>
+  <p class="text-muted mb-8">{{ order.created_at | date: '%B %d, %Y at %I:%M %p' }}</p>
+  <div class="glass-card">
+    {% for line_item in order.line_items %}
+      <div class="cart-item" style="margin-bottom:1rem">
+        <div class="cart-item-image" style="width:5rem;height:5rem">
+          {% if line_item.image %}
+            <img src="{{ line_item.image | image_url: width: 200 }}" alt="{{ line_item.title }}">
+          {% endif %}
+        </div>
+        <div class="cart-item-details">
+          <h3 class="cart-item-title" style="font-size:1rem">{{ line_item.title }}</h3>
+          <p class="text-muted" style="font-size:0.875rem">Qty: {{ line_item.quantity }} × {{ line_item.price | money }}</p>
+        </div>
+      </div>
+    {% endfor %}
+    <div class="order-total" style="margin-top:1.5rem">
+      <span class="order-total-label">Total</span>
+      <span class="order-total-value gradient-text">{{ order.total_price | money }}</span>
+    </div>
+  </div>
+  <a href="/account" class="btn btn-outline mt-8">&larr; Back to Account</a>
+</div>

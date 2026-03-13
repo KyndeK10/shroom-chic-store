@@ -1,0 +1,27 @@
+{
+  "current": {
+    "color_primary": "#a855f7",
+    "color_secondary": "#ec4899",
+    "color_background": "#0c0a09",
+    "color_text": "#f5f5f4",
+    "color_text_muted": "#a8a29e",
+    "font_heading": "Playfair Display",
+    "font_body": "Inter",
+    "social_instagram": "https://instagram.com/shroomchiccreations",
+    "social_tiktok": "",
+    "social_twitter": "",
+    "social_facebook": "",
+    "social_youtube": "",
+    "enable_animated_background": true,
+    "particle_density": 50,
+    "sections": {
+      "header": {
+        "type": "header"
+      },
+      "footer": {
+        "type": "footer"
+      }
+    },
+    "content_for_index": []
+  }
+}

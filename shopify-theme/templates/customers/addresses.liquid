@@ -1,0 +1,18 @@
+<!-- Customer Addresses Template -->
+<div class="container py-24" style="max-width:48rem">
+  <h1 class="font-serif gradient-text" style="font-size:2.5rem;font-weight:700;margin-bottom:2rem">My Addresses</h1>
+  
+  {% for address in customer.addresses %}
+    <div class="glass-card mb-8">
+      <p class="text-stone-300">{{ address.first_name }} {{ address.last_name }}</p>
+      <p class="text-muted" style="font-size:0.875rem">{{ address.address1 }}{% if address.address2 %}, {{ address.address2 }}{% endif %}</p>
+      <p class="text-muted" style="font-size:0.875rem">{{ address.city }}, {{ address.province }} {{ address.zip }}</p>
+      <p class="text-muted" style="font-size:0.875rem">{{ address.country }}</p>
+      {% if address == customer.default_address %}
+        <span style="color:var(--color-primary);font-size:0.75rem;font-weight:600;text-transform:uppercase">Default</span>
+      {% endif %}
+    </div>
+  {% endfor %}
+  
+  <a href="/account" class="btn btn-outline">&larr; Back to Account</a>
+</div>

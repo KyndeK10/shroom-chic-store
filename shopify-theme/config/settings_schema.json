@@ -1,0 +1,133 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "Shroom Chic Creations",
+    "theme_version": "1.0.0",
+    "theme_author": "Shroom Chic",
+    "theme_documentation_url": "",
+    "theme_support_url": ""
+  },
+  {
+    "name": "Colors",
+    "settings": [
+      {
+        "type": "color",
+        "id": "color_primary",
+        "label": "Primary Color",
+        "default": "#a855f7",
+        "info": "Main brand color (purple)"
+      },
+      {
+        "type": "color",
+        "id": "color_secondary",
+        "label": "Secondary Color",
+        "default": "#ec4899",
+        "info": "Accent color (pink)"
+      },
+      {
+        "type": "color",
+        "id": "color_background",
+        "label": "Background Color",
+        "default": "#0c0a09",
+        "info": "Main background (dark stone)"
+      },
+      {
+        "type": "color",
+        "id": "color_text",
+        "label": "Text Color",
+        "default": "#f5f5f4",
+        "info": "Primary text color (light stone)"
+      },
+      {
+        "type": "color",
+        "id": "color_text_muted",
+        "label": "Muted Text Color",
+        "default": "#a8a29e",
+        "info": "Secondary text color"
+      }
+    ]
+  },
+  {
+    "name": "Typography",
+    "settings": [
+      {
+        "type": "select",
+        "id": "font_heading",
+        "label": "Heading Font",
+        "default": "Playfair Display",
+        "options": [
+          { "value": "Playfair Display", "label": "Playfair Display (Serif)" },
+          { "value": "Inter", "label": "Inter (Sans-serif)" },
+          { "value": "Space Grotesk", "label": "Space Grotesk (Mono)" }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "font_body",
+        "label": "Body Font",
+        "default": "Inter",
+        "options": [
+          { "value": "Inter", "label": "Inter (Sans-serif)" },
+          { "value": "Playfair Display", "label": "Playfair Display (Serif)" },
+          { "value": "Space Grotesk", "label": "Space Grotesk (Mono)" }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Social Media",
+    "settings": [
+      {
+        "type": "text",
+        "id": "social_instagram",
+        "label": "Instagram URL",
+        "default": "https://instagram.com/shroomchiccreations"
+      },
+      {
+        "type": "text",
+        "id": "social_tiktok",
+        "label": "TikTok URL",
+        "default": ""
+      },
+      {
+        "type": "text",
+        "id": "social_twitter",
+        "label": "Twitter/X URL",
+        "default": ""
+      },
+      {
+        "type": "text",
+        "id": "social_facebook",
+        "label": "Facebook URL",
+        "default": ""
+      },
+      {
+        "type": "text",
+        "id": "social_youtube",
+        "label": "YouTube URL",
+        "default": ""
+      }
+    ]
+  },
+  {
+    "name": "Animations",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "enable_animated_background",
+        "label": "Enable animated background particles",
+        "default": true
+      },
+      {
+        "type": "range",
+        "id": "particle_density",
+        "label": "Particle Density",
+        "min": 0,
+        "max": 100,
+        "step": 10,
+        "default": 50,
+        "unit": "%"
+      }
+    ]
+  }
+]

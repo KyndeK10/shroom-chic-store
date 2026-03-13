@@ -1,0 +1,77 @@
+<!-- Cart Template -->
+{% if cart.item_count == 0 %}
+  <div class="empty-cart">
+    <div class="empty-cart-icon">
+      <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+    </div>
+    <h2>Your cart is empty</h2>
+    <p class="text-muted mb-8" style="max-width:28rem;margin-left:auto;margin-right:auto">Looks like you haven't added any magical items to your cart yet.</p>
+    <a href="/collections/all" class="btn btn-primary btn-lg">Continue Shopping</a>
+  </div>
+{% else %}
+  <div class="container py-12" style="padding-top:3rem;padding-bottom:5rem">
+    <h1 class="font-serif gradient-text" style="font-size:2.5rem;font-weight:700;margin-bottom:2.5rem">Your Magical Haul</h1>
+
+    <form action="/cart" method="post" class="cart-layout">
+      <div style="display:flex;flex-direction:column;gap:1.5rem">
+        {% for item in cart.items %}
+          <div class="cart-item">
+            <div class="cart-item-image">
+              {% if item.image %}
+                <img src="{{ item.image | image_url: width: 256 }}" alt="{{ item.title }}">
+              {% endif %}
+            </div>
+
+            <div class="cart-item-details">
+              <div>
+                <div style="display:flex;justify-content:space-between;align-items:flex-start">
+                  <h3 class="cart-item-title">{{ item.product.title }}</h3>
+                  <a href="/cart/change?line={{ forloop.index }}&quantity=0" class="cart-remove-btn" aria-label="Remove">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+                  </a>
+                </div>
+                {% if item.variant.title != 'Default Title' %}
+                  <p class="cart-item-variant">{{ item.variant.title }}</p>
+                {% endif %}
+              </div>
+
+              <div class="cart-item-bottom">
+                <div class="qty-selector">
+                  <a href="/cart/change?line={{ forloop.index }}&quantity={{ item.quantity | minus: 1 }}" class="qty-btn" aria-label="Decrease">−</a>
+                  <span class="qty-value">{{ item.quantity }}</span>
+                  <a href="/cart/change?line={{ forloop.index }}&quantity={{ item.quantity | plus: 1 }}" class="qty-btn" aria-label="Increase">+</a>
+                </div>
+                <p class="cart-item-price">{{ item.line_price | money }}</p>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+
+      <div>
+        <div class="order-summary">
+          <h3 class="font-serif">Order Summary</h3>
+          <div class="order-row">
+            <span>Subtotal</span>
+            <span>{{ cart.total_price | money }}</span>
+          </div>
+          <div class="order-row">
+            <span>Shipping</span>
+            <span class="text-stone-500" style="font-size:0.875rem">Calculated at checkout</span>
+          </div>
+          <div class="order-total">
+            <span class="order-total-label">Total</span>
+            <span class="order-total-value gradient-text">{{ cart.total_price | money }}</span>
+          </div>
+          <button type="submit" name="checkout" class="btn btn-primary btn-full btn-lg">
+            Checkout
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </button>
+          <div class="mt-6 text-center">
+            <p class="text-stone-500" style="font-size:0.75rem">Secure checkout powered by Shopify</p>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+{% endif %}

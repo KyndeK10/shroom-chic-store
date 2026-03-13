@@ -1,0 +1,96 @@
+<!-- Header Section -->
+<nav class="site-header">
+  <div class="container header-inner">
+    <a href="/" class="header-logo">
+      {% if section.settings.logo %}
+        <img src="{{ section.settings.logo | image_url: width: 96 }}" alt="{{ shop.name }}">
+      {% else %}
+        <img src="{{ 'logo.png' | asset_url }}" alt="{{ shop.name }}">
+      {% endif %}
+      <span class="header-logo-text gradient-text">{{ section.settings.logo_text | default: shop.name }}</span>
+    </a>
+
+    <div class="nav-links">
+      {% for block in section.blocks %}
+        {% if block.type == 'nav_link' %}
+          <a href="{{ block.settings.link }}" class="nav-link">{{ block.settings.label }}</a>
+        {% endif %}
+      {% endfor %}
+    </div>
+
+    <div class="header-actions">
+      <a href="/cart" class="cart-link" aria-label="Cart">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg>
+        {% if cart.item_count > 0 %}
+          <span class="cart-badge">{{ cart.item_count }}</span>
+        {% endif %}
+      </a>
+    </div>
+
+    <button class="mobile-toggle" aria-label="Toggle menu">
+      <svg class="icon-menu" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      <svg class="icon-close" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+  </div>
+
+  <div class="mobile-menu">
+    {% for block in section.blocks %}
+      {% if block.type == 'nav_link' %}
+        <a href="{{ block.settings.link }}" class="nav-link">{{ block.settings.label }}</a>
+      {% endif %}
+    {% endfor %}
+    <a href="/cart" class="cart-link-mobile">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg>
+      Cart ({{ cart.item_count }})
+    </a>
+  </div>
+</nav>
+
+{% schema %}
+{
+  "name": "Header",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Logo Image"
+    },
+    {
+      "type": "text",
+      "id": "logo_text",
+      "label": "Logo Text",
+      "default": "Shroom Chic"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "nav_link",
+      "name": "Navigation Link",
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label",
+          "default": "Shop"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Header",
+      "blocks": [
+        { "type": "nav_link", "settings": { "label": "Shop", "link": "/collections/all" } },
+        { "type": "nav_link", "settings": { "label": "Drops", "link": "/pages/drops" } },
+        { "type": "nav_link", "settings": { "label": "About", "link": "/pages/about" } },
+        { "type": "nav_link", "settings": { "label": "Contact", "link": "/pages/contact" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

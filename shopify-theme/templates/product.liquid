@@ -1,0 +1,75 @@
+<!-- Product Template -->
+<div class="relative">
+  {% if settings.enable_animated_background %}
+    {% render 'animated-background', density: settings.particle_density %}
+  {% endif %}
+
+  <div class="container z-10 py-12" style="padding-top:3rem;padding-bottom:6rem">
+    <div class="product-detail">
+      <!-- Product Image -->
+      <div class="product-image-wrap">
+        {% if product.featured_image %}
+          <img src="{{ product.featured_image | image_url: width: 1200 }}" alt="{{ product.title }}">
+        {% endif %}
+      </div>
+
+      <!-- Product Info -->
+      <div class="product-info">
+        <h1 class="gradient-text">{{ product.title }}</h1>
+        <p class="product-price">{{ product.price | money }}</p>
+        <div class="product-description">{{ product.description }}</div>
+
+        {% form 'product', product, class: 'product-form', data-variants: product.variants | json %}
+          <!-- Variant Selectors -->
+          {% if product.has_only_default_variant == false %}
+            {% for option in product.options_with_values %}
+              <div class="variant-section">
+                <div class="variant-label">{{ option.name }}</div>
+                <div class="variant-options">
+                  {% for value in option.values %}
+                    <button
+                      type="button"
+                      class="variant-btn {% if option.selected_value == value %}{% if option.name == 'Size' %}active-size{% else %}active-color{% endif %}{% endif %}"
+                      data-group="{{ option.name | downcase }}"
+                      data-value="{{ value }}"
+                    >
+                      {{ value }}
+                    </button>
+                  {% endfor %}
+                </div>
+              </div>
+            {% endfor %}
+          {% endif %}
+
+          <!-- Quantity -->
+          <div class="variant-section">
+            <div class="variant-label">Quantity</div>
+            <div class="qty-selector">
+              <button type="button" class="qty-btn" data-action="decrease">−</button>
+              <span class="qty-value">1</span>
+              <button type="button" class="qty-btn" data-action="increase">+</button>
+              <input type="hidden" name="quantity" value="1">
+            </div>
+          </div>
+
+          <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+
+          <div style="margin-top:1.5rem">
+            <button type="submit" class="btn-add-cart" {% unless product.available %}disabled{% endunless %}>
+              {% if product.available %}
+                Add to Cart
+              {% else %}
+                Sold Out
+              {% endif %}
+            </button>
+          </div>
+        {% endform %}
+      </div>
+    </div>
+
+    <!-- Social Embed -->
+    <div class="section-divider fade-in-up">
+      {% render 'social-card', type: 'tiktok', title: 'See It In Action' %}
+    </div>
+  </div>
+</div>

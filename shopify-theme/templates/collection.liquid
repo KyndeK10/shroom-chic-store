@@ -1,0 +1,82 @@
+<!-- Collection Template (Shop Page) -->
+<div class="relative" style="min-height:100vh">
+  {% if settings.enable_animated_background %}
+    {% render 'animated-background', density: settings.particle_density %}
+  {% endif %}
+
+  <div class="container z-10 py-12">
+    <div class="collection-header" style="animation: fadeSlideUp 0.8s ease-out both">
+      <h1 class="gradient-text">{{ collection.title | default: 'The Collection' }}</h1>
+      <p class="text-muted" style="max-width:42rem;margin:0 auto">{{ collection.description | default: 'Explore our trippy, boho-inspired print-on-demand creations.' }}</p>
+    </div>
+
+    <!-- Filters -->
+    <div class="collection-filters">
+      <div class="search-wrap">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input type="text" placeholder="Search the magic..." class="form-input form-input-round" id="product-search" onkeyup="filterProducts()">
+      </div>
+
+      <div class="filter-tags">
+        <button class="filter-tag active" onclick="filterByTag(this, '')">All</button>
+        {% for tag in collection.all_tags %}
+          <button class="filter-tag" onclick="filterByTag(this, '{{ tag }}')">{{ tag }}</button>
+        {% endfor %}
+      </div>
+    </div>
+
+    <!-- Product Grid -->
+    <div class="product-grid">
+      {% for product in collection.products %}
+        <div class="product-card fade-in-up" data-title="{{ product.title | downcase }}" data-tags="{{ product.tags | join: ',' | downcase }}" style="animation-delay:{{ forloop.index0 | times: 0.1 }}s">
+          <div class="product-card-glow"></div>
+          <a href="{{ product.url }}" class="product-card-image">
+            <div class="product-card-image-overlay"></div>
+            {% if product.featured_image %}
+              <img src="{{ product.featured_image | image_url: width: 800 }}" alt="{{ product.title }}" loading="lazy">
+            {% endif %}
+          </a>
+          <div class="product-card-body">
+            <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:0.5rem">
+              <h3 class="product-card-title">{{ product.title }}</h3>
+              <span class="product-card-price">{{ product.price | money }}</span>
+            </div>
+            <p class="product-card-category">{{ product.type }}</p>
+            <a href="{{ product.url }}" class="btn btn-dark btn-full">Customize &amp; Buy</a>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+
+    {% if collection.products.size == 0 %}
+      <div class="text-center py-16">
+        <p class="text-muted" style="font-size:1.125rem">No magical items found in this collection.</p>
+      </div>
+    {% endif %}
+
+    {% if paginate.pages > 1 %}
+      <div class="text-center mt-8">
+        {{ paginate | default_pagination }}
+      </div>
+    {% endif %}
+  </div>
+</div>
+
+<script>
+function filterProducts() {
+  var query = document.getElementById('product-search').value.toLowerCase();
+  document.querySelectorAll('.product-card').forEach(function(card) {
+    var title = card.dataset.title || '';
+    card.style.display = title.indexOf(query) !== -1 ? '' : 'none';
+  });
+}
+function filterByTag(btn, tag) {
+  document.querySelectorAll('.filter-tag').forEach(function(t) { t.classList.remove('active'); });
+  btn.classList.add('active');
+  document.querySelectorAll('.product-card').forEach(function(card) {
+    if (!tag) { card.style.display = ''; return; }
+    var tags = (card.dataset.tags || '').toLowerCase();
+    card.style.display = tags.indexOf(tag.toLowerCase()) !== -1 ? '' : 'none';
+  });
+}
+</script>

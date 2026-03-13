@@ -1,0 +1,33 @@
+<!-- Customer Account Template -->
+<div class="container py-24">
+  <h1 class="font-serif gradient-text" style="font-size:2.5rem;font-weight:700;margin-bottom:2rem">My Account</h1>
+  <div class="about-grid">
+    <div>
+      <div class="glass-card mb-8">
+        <h2 class="font-serif" style="font-size:1.5rem;font-weight:700;color:#fff;margin-bottom:1rem">Account Details</h2>
+        <p class="text-stone-300">{{ customer.name }}</p>
+        <p class="text-muted">{{ customer.email }}</p>
+        <a href="/account/logout" class="btn btn-outline" style="margin-top:1rem">Logout</a>
+      </div>
+    </div>
+    <div>
+      <div class="glass-card">
+        <h2 class="font-serif" style="font-size:1.5rem;font-weight:700;color:#fff;margin-bottom:1rem">Order History</h2>
+        {% if customer.orders.size > 0 %}
+          {% for order in customer.orders %}
+            <div style="padding:1rem 0;border-bottom:1px solid rgba(88,28,135,0.3)">
+              <div style="display:flex;justify-content:space-between;align-items:center">
+                <a href="{{ order.customer_url }}" style="color:var(--color-primary);font-weight:500">{{ order.name }}</a>
+                <span class="text-muted" style="font-size:0.875rem">{{ order.created_at | date: '%B %d, %Y' }}</span>
+              </div>
+              <p class="text-stone-300" style="font-size:0.875rem;margin-top:0.25rem">{{ order.total_price | money }} — {{ order.financial_status_label }}</p>
+            </div>
+          {% endfor %}
+        {% else %}
+          <p class="text-muted">No orders yet.</p>
+          <a href="/collections/all" class="btn btn-primary" style="margin-top:1rem">Start Shopping</a>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
