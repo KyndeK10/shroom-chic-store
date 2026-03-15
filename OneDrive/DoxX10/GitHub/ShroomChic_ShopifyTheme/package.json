@@ -7,6 +7,11 @@
   },
   "scripts": {
     "lint:html": "htmlhint \"**/*.liquid\" --config .htmlhintrc",
-    "lint": "npm run lint:html"
+    "lint": "npm run lint:html",
+    "optimize:images": "node ./scripts/optimize-images.js"
+  },
+  "dependencies": {
+    "imagemagick": "^0.1.3",
+    "sharp": "^0.32.0"
   }
 }
