@@ -1,0 +1,66 @@
+{
+  "sections": {
+    "hero": {
+      "type": "shroom-chic-hero-system",
+      "blocks": {
+        "slide_1": {
+          "type": "slide",
+          "settings": {
+            "title": "Welcome to the Magic",
+            "subtitle": "Trippy Boho Creations for Dreamers",
+            "button_text": "Explore Products",
+            "button_link": "shopify://collections/all"
+          }
+        },
+        "slide_2": {
+          "type": "slide",
+          "settings": {
+            "title": "Wear the Vibe",
+            "subtitle": "Print-on-Demand Art Inspired by Nature",
+            "button_text": "Browse Collection",
+            "button_link": "shopify://collections/all"
+          }
+        },
+        "slide_3": {
+          "type": "slide",
+          "settings": {
+            "title": "Designed for Free Spirits",
+            "subtitle": "Unique psychedelic style for modern mystics",
+            "button_text": "Discover More",
+            "button_link": "shopify://pages/about"
+          }
+        }
+      },
+      "block_order": [
+        "slide_1",
+        "slide_2",
+        "slide_3"
+      ],
+      "settings": {
+        "particle_density": 45,
+        "particle_style": "spores",
+        "blur_strength": 4,
+        "autoplay_speed": 6000
+      }
+    },
+    "social": {
+      "type": "social-feeds",
+      "settings": {
+        "heading": "Follow the Journey",
+        "subheading": "Get inspired by our community and see the latest creations in action."
+      }
+    },
+    "newsletter": {
+      "type": "newsletter",
+      "settings": {
+        "heading": "Join the Coven",
+        "description": "Subscribe for exclusive drops, secret sales, and psychedelic inspiration."
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "social",
+    "newsletter"
+  ]
+}

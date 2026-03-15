@@ -24,6 +24,13 @@
               {% if result.price %}
                 <span class="product-card-price">{{ result.price | money }}</span>
               {% endif %}
+              <div style="display:flex; gap:0.5rem; margin-top:1rem;">
+                <a href="{{ result.url }}" class="btn btn-dark" style="flex: 1; text-align: center; padding: 10px; font-size: 0.875rem;">View Info</a>
+                <form method="post" action="/cart/add" style="flex: 1; display: flex; margin: 0;">
+                  <input type="hidden" name="id" value="{{ result.variants.first.id }}" />
+                  <button type="submit" class="btn btn-dark" style="flex: 1; background: linear-gradient(135deg, #b84cff, #7a2cff); border: none; padding: 10px; color: white; font-size: 0.875rem;">Add to Cart</button>
+                </form>
+              </div>
             </div>
           </div>
         {% endfor %}

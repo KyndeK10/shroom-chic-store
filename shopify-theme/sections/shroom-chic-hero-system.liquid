@@ -1,0 +1,461 @@
+{%- style -%}
+  .hero-system {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: inherit; /* "Poppins", sans-serif in theme */
+    color: white;
+  }
+
+  .hero-system--{{ section.id }} .gradient-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    background: radial-gradient(circle at center, rgba(140,40,200,0.25), rgba(0,0,0,0.85));
+    backdrop-filter: blur({{ section.settings.blur_strength }}px);
+    -webkit-backdrop-filter: blur({{ section.settings.blur_strength }}px);
+  }
+
+  .hero-slider {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+  }
+
+  .hero-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+    pointer-events: none;
+  }
+
+  .hero-slide.active {
+    opacity: 1;
+  }
+
+  .hero-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .hero-particles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  /* Particle Styles */
+  .spore {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.4);
+    border-radius: 50%;
+    filter: blur(2px);
+    animation: float var(--duration) ease-in-out infinite alternate, sway var(--duration) ease-in-out infinite alternate;
+  }
+  
+  .spore.style-glow_dots {
+      background: radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(184,76,255,0.8) 50%, rgba(184,76,255,0) 100%);
+      filter: blur(1px);
+      box-shadow: 0 0 10px rgba(184,76,255,0.5);
+  }
+  
+  .spore.style-stars {
+     background: white;
+     clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+     border-radius: 0;
+     filter: none;
+     animation: twinkle var(--duration) ease-in-out infinite alternate, float var(--duration) linear infinite;
+  }
+  
+  .spore.style-mushrooms {
+      background-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.48 2 2 6.48 2 12h20c0-5.52-4.48-10-10-10zm0 3c2.21 0 4 1.79 4 4s-1.79 4-4 4-4-1.79-4-4 1.79-4 4-4zM6 14h12v6a2 2 0 01-2 2H8a2 2 0 01-2-2v-6z"/></svg>');
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-color: transparent;
+      border-radius: 0;
+      filter: drop-shadow(0 0 5px rgba(255,100,200,0.5));
+  }
+
+
+  @keyframes float {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-100px); }
+  }
+
+  @keyframes sway {
+    0% { transform: translateX(-20px); }
+    100% { transform: translateX(20px); }
+  }
+  
+  @keyframes twinkle {
+      0% { opacity: 0.2; transform: scale(0.8) rotate(0deg); }
+      100% { opacity: 1; transform: scale(1.2) rotate(180deg); }
+  }
+
+
+  .hero-content-wrapper {
+    position: relative;
+    z-index: 3;
+    text-align: center;
+    width: 100%;
+    max-width: 800px;
+    padding: 0 20px;
+  }
+
+  .hero-content {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 100%;
+      opacity: 0;
+      transition: opacity 0.5s ease-in-out, transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+      pointer-events: none;
+      visibility: hidden;
+  }
+  
+  .hero-content.active {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+      transform: translate(-50%, -50%) scale(1);
+  }
+  
+  .hero-content.inactive {
+      transform: translate(-50%, -40%) scale(0.95);
+  }
+
+
+  .hero-title {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    margin-bottom: 1rem;
+    line-height: 1.1;
+  }
+
+  .hero-subtitle {
+    font-size: clamp(1rem, 2vw, 1.5rem);
+    opacity: 0.9;
+    margin-bottom: 2rem;
+  }
+
+  .hero-button {
+    display: inline-block;
+    padding: 14px 28px;
+    border-radius: 40px;
+    background: linear-gradient(135deg, #b84cff, #7a2cff);
+    color: white;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(184, 76, 255, 0.4);
+  }
+
+  .hero-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(184, 76, 255, 0.6);
+  }
+  
+  /* Fallback layout for content wrapper to provide height */
+  .hero-content-sizer {
+      visibility: hidden;
+      pointer-events: none;
+  }
+{%- endstyle -%}
+
+<section id="HeroSystem-{{ section.id }}" class="hero-system hero-system--{{ section.id }}" data-autoplay-speed="{{ section.settings.autoplay_speed }}" data-particle-density="{{ section.settings.particle_density }}" data-particle-style="{{ section.settings.particle_style }}">
+  
+  {%- if section.blocks.size > 0 -%}
+    <div class="hero-slider">
+      {%- for block in section.blocks -%}
+        <div class="hero-slide {% if forloop.first %}active{% endif %}" {{ block.shopify_attributes }}>
+          {%- if block.settings.image != blank -%}
+             {{
+                block.settings.image
+                | image_url: width: 3840
+                | image_tag:
+                  loading: {% if forloop.first %}eager{% else %}lazy{% endif %},
+                  sizes: '100vw',
+                  widths: '375, 550, 750, 1100, 1500, 1780, 2000, 3000, 3840'
+              }}
+          {%- else -%}
+            {{ 'lifestyle-2' | placeholder_svg_tag: 'placeholder-svg' }}
+          {%- endif -%}
+        </div>
+      {%- endfor -%}
+    </div>
+  {%- endif -%}
+
+  <div class="gradient-overlay"></div>
+  
+  <div class="hero-particles"></div>
+
+  {%- if section.blocks.size > 0 -%}
+      <div class="hero-content-wrapper">
+         <div class="hero-content-sizer">
+             {%- assign longest_title = "" -%}
+             {%- for block in section.blocks -%}
+                {%- if block.settings.title.size > longest_title.size -%}
+                    {%- assign longest_title = block.settings.title -%}
+                {%- endif -%}
+             {%- endfor -%}
+             <h2 class="hero-title">{{ longest_title }}</h2>
+             <p class="hero-subtitle">M</p>
+             <a class="hero-button">M</a>
+         </div>
+          
+        {%- for block in section.blocks -%}
+          <div class="hero-content {% if forloop.first %}active{% else %}inactive{% endif %}" id="content-{{ block.id }}">
+            {%- if block.settings.title != blank -%}
+              <h2 class="hero-title">{{ block.settings.title | escape }}</h2>
+            {%- endif -%}
+            {%- if block.settings.subtitle != blank -%}
+              <p class="hero-subtitle">{{ block.settings.subtitle | escape }}</p>
+            {%- endif -%}
+            {%- if block.settings.button_text != blank and block.settings.button_link != blank -%}
+              <a href="{{ block.settings.button_link }}" class="hero-button">
+                {{ block.settings.button_text | escape }}
+              </a>
+            {%- endif -%}
+          </div>
+        {%- endfor -%}
+      </div>
+  {%- endif -%}
+</section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const section = document.getElementById('HeroSystem-{{ section.id }}');
+    if (!section) return;
+
+    // --- Slider Logic ---
+    const slides = section.querySelectorAll('.hero-slide');
+    const contents = section.querySelectorAll('.hero-content');
+    const autoplaySpeed = parseInt(section.dataset.autoplaySpeed, 10) || 6000;
+    let currentSlide = 0;
+    
+    function nextSlide() {
+      if (slides.length <= 1) return;
+        
+      slides[currentSlide].classList.remove('active');
+      contents[currentSlide].classList.remove('active');
+      contents[currentSlide].classList.add('inactive');
+      
+      currentSlide = (currentSlide + 1) % slides.length;
+      
+      slides[currentSlide].classList.add('active');
+      contents[currentSlide].classList.remove('inactive');
+      contents[currentSlide].classList.add('active');
+    }
+
+    if (slides.length > 1) {
+       setInterval(nextSlide, autoplaySpeed);
+    }
+
+    // --- Particle Logic ---
+    const particlesContainer = section.querySelector('.hero-particles');
+    let baseDensity = parseInt(section.dataset.particleDensity, 10) || 45;
+    const stylePrefix = section.dataset.particleStyle || 'spores';
+    
+    // Respect reduced motion
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReducedMotion) {
+        baseDensity = Math.min(baseDensity, 10); // drastic reduction
+    }
+
+    function generateParticles() {
+        particlesContainer.innerHTML = ''; // clear existing
+        
+        let density = baseDensity;
+        const width = window.innerWidth;
+        
+        // Responsive scaling
+        if (width < 768) {
+            density = Math.floor(baseDensity * (18/45)); // Scale down mapped from requested spec
+        } else if (width < 1024) {
+            density = Math.floor(baseDensity * (30/45));
+        }
+
+        for (let i = 0; i < density; i++) {
+            const p = document.createElement('div');
+            p.classList.add('spore');
+            p.classList.add(`style-${stylePrefix}`);
+
+            const size = Math.random() * 20 + 10;
+            p.style.width = size + "px";
+            p.style.height = size + "px";
+
+            p.style.left = Math.random() * 100 + "%";
+            p.style.top = Math.random() * 100 + "%";
+
+            // Use CSS custom property for random duration
+            const duration = (Math.random() * 20 + 10) + "s";
+            p.style.setProperty('--duration', duration);
+            
+            // Random animation delay so they don't all start moving at once
+            p.style.animationDelay = `-${Math.random() * 20}s`;
+
+            particlesContainer.appendChild(p);
+        }
+    }
+
+    generateParticles();
+
+    // Re-generate on resize to update density and positions
+    let resizeTimer;
+    window.addEventListener('resize', () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(generateParticles, 250);
+    });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Shroom Chic Hero",
+  "tag": "section",
+  "class": "section-hero-system",
+  "settings": [
+    {
+      "type": "range",
+      "id": "particle_density",
+      "min": 10,
+      "max": 120,
+      "step": 5,
+      "label": "Particle Density (Desktop)",
+      "default": 45
+    },
+    {
+      "type": "select",
+      "id": "particle_style",
+      "label": "Particle Style",
+      "options": [
+        {
+          "value": "spores",
+          "label": "Spores (Soft Orbs)"
+        },
+        {
+          "value": "mushrooms",
+          "label": "Mushrooms (Icons)"
+        },
+        {
+          "value": "glow_dots",
+          "label": "Glowing Dots"
+        },
+        {
+          "value": "stars",
+          "label": "Stars"
+        }
+      ],
+      "default": "spores"
+    },
+    {
+      "type": "range",
+      "id": "blur_strength",
+      "min": 0,
+      "max": 10,
+      "step": 1,
+      "label": "Backdrop Blur Strength",
+      "default": 4
+    },
+    {
+       "type": "number",
+       "id": "autoplay_speed",
+       "label": "Slider Autoplay Speed (ms)",
+       "default": 6000
+    }
+  ],
+  "blocks": [
+    {
+      "type": "slide",
+      "name": "Hero Slide",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Background Image"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Welcome to the Magic"
+        },
+        {
+          "type": "text",
+          "id": "subtitle",
+          "label": "Subtitle",
+          "default": "Trippy Boho Creations for Dreamers"
+        },
+        {
+          "type": "text",
+          "id": "button_text",
+          "label": "Button Text",
+          "default": "Explore Products"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "Button Link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Shroom Chic Hero",
+      "blocks": [
+        {
+          "type": "slide",
+          "settings": {
+            "title": "Welcome to the Magic",
+            "subtitle": "Trippy Boho Creations for Dreamers",
+            "button_text": "Explore Products",
+            "button_link": "/collections/all"
+          }
+        },
+        {
+          "type": "slide",
+           "settings": {
+            "title": "Wear the Vibe",
+            "subtitle": "Print-on-Demand Art Inspired by Nature",
+            "button_text": "Browse Collection",
+            "button_link": "/collections/all"
+          }
+        },
+        {
+          "type": "slide",
+           "settings": {
+            "title": "Designed for Free Spirits",
+            "subtitle": "Unique psychedelic style for modern mystics",
+            "button_text": "Discover More",
+            "button_link": "/pages/about"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
